@@ -1,5 +1,5 @@
 # Creating A Musical Streaming Interface
-### Free JackTrip course offered by Newline - Hawi Abraham
+**Free JackTrip course offered by Newline - Hawi Abraham**
 
 This will be a free course, offered by Newline, on the basics of JackTrip and how to create your own musical streaming interface similar to JackTrip from scratch. For the uninitiated, JackTrip is a musical interface that allows musicians to collaborate remotely. Proper use of JackTrip lets musicians work without being bounded by their physical location.
 

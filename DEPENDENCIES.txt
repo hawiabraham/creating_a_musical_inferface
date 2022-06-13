@@ -1,0 +1,7 @@
+to build
+dnf install rtaudio-devel
+
+but if just to run
+dnf install rtaudio
+
+

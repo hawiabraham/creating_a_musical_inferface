@@ -2,7 +2,21 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+DEFINES += RT_AUDIO
 CONFIG += c++11
+
+# pkg-config is required for building with system-provided rtaudio
+CONFIG += link_pkgconfig
+PKGCONFIG += rtaudio
+win32 {
+  # even though we get linker flags from pkg-config, define -lrtaudio again to enforce linking order
+  CONFIG += no_lflags_merge
+  LIBS += -lrtaudio -lole32 -lwinmm -lksuser -lmfplat -lmfuuid -lwmcodecdspuuid # -ldsound # -ldsound only needed if rtaudio is built with directsound support
+}
+
+
+DESTDIR = .
+QMAKE_CLEAN += -r ./jacktrip ./jacktrip_debug ./release/* ./debug/* ./$${application_id}.xml ./$${application_id}.desktop ./$${application_id}.png ./$${application_id}.svg ./jacktrip.1 ./librtaudio.a
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.

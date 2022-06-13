@@ -23,10 +23,12 @@ QMAKE_CLEAN += -r ./jacktrip ./jacktrip_debug ./release/* ./debug/* ./$${applica
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    duplex.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    duplex.h \
     mainwindow.h
 
 FORMS += \

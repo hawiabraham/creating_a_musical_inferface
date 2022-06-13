@@ -27,15 +27,25 @@ int inout( void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames,
         streamTimePrintTime += streamTimePrintIncrement;
     }
 
+    unsigned int i, j;
+    MY_TYPE *inBuffer = (MY_TYPE *) inputBuffer;
+    double *inValues = (double *) data;
+    for ( i=0; i<nBufferFrames; i++ ) {
+      for ( j=0; j<channelsGlobal; j++ ) {
+        inValues[j] = *inBuffer++ / SCALE;
+        std::cout << "i\t" << i << "\tj\t" << j << "\tval=\t"  << inValues[j] << std::endl;
+      }
+    }
+
 //    unsigned int *bytes = (unsigned int *) data;
 //    memcpy( outputBuffer, inputBuffer, *bytes );
 
-    unsigned int i, j;
     extern unsigned int channelsGlobal;
     MY_TYPE *buffer = (MY_TYPE *) outputBuffer;
     double *lastValues = (double *) data;
     for ( i=0; i<nBufferFrames; i++ ) {
       for ( j=0; j<channelsGlobal; j++ ) {
+//          std::cout << "i\t" << i << "\tj\t" << j << "\tval=\t"  << lastValues[j] << std::endl;
         *buffer++ = (MY_TYPE) (lastValues[j] * SCALE * 0.5);
         lastValues[j] += BASE_RATE * (j+1+(j*0.1));
         if ( lastValues[j] >= 1.0 ) lastValues[j] -= 2.0;

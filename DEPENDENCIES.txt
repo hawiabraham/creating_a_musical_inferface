@@ -1,0 +1,16 @@
+to build
+dnf install rtaudio-devel
+
+but if just to run
+dnf install rtaudio
+
+
+git submodule update --init
+
+cd rtaudio/
+./autogen.sh 
+make
+tests/duplex 1 48000
+
+tests/audioprobe
+
